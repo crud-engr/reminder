@@ -1,6 +1,10 @@
 const reminderModel = require('../models/Reminder');
 
 class ReminderService {
+    /**
+     * POST /reminders
+     * @body { body, description }
+     */
     async createReminder(req, res, next) {
         try {
             const { user, description } = req.body;
@@ -11,7 +15,6 @@ class ReminderService {
                 code: 201,
             });
         } catch (err) {
-            console.log(err)
             return res.status(500).json({
                 status: 'error',
                 message: 'an error occur',
@@ -20,6 +23,10 @@ class ReminderService {
         }
     }
 
+    /**
+     * GET /reminder/:id
+     * @params { id }
+     */
     async getReminder(req, res, next) {
         try {
             const reminder = await reminderModel.findByPk(req.params.id);
@@ -43,6 +50,9 @@ class ReminderService {
         }
     }
 
+    /**
+     * GET /reminders
+     */
     async getReminders(req, res, next) {
         try {
             const allReminders = await reminderModel.findAll();
@@ -60,6 +70,10 @@ class ReminderService {
         }
     }
 
+    /**
+     * PATCH /reminder/:id
+     * @params { id }
+     */
     async updateReminder(req, res, next) {
         try {
             const reminder = await reminderModel.update(req.body, {
@@ -80,6 +94,10 @@ class ReminderService {
         }
     }
 
+    /**
+     * DELETE /reminder/:id
+     * @params { id }
+     */
     async deleteReminder(req, res, next) {
         try {
             const reminder = await reminderModel.destroy({

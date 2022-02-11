@@ -6,6 +6,7 @@ const db = require('./utils/database');
 const connection = require('./utils/connection');
 require('dotenv').config();
 
+// db connection
 connection();
 
 const app = express();
@@ -25,6 +26,7 @@ app.use((req, res, next) => {
 app.use(morgan('dev'));
 app.use('/reminders', reminderRoute);
 
+// listen on incoming requests
 (async () => {
     try {
         await db.sync({ force: false });
