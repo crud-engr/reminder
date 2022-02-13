@@ -12,7 +12,7 @@
 #### Navigate to the folder
 ```cd folder_name```
 
-#### Open two terminals and navigate into server and web folder
+#### Open terminal and navigate into project folder
 ```npm install```
 
 #### Add .env file to the project root directory and add the below config
